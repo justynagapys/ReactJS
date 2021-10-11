@@ -1,7 +1,7 @@
 # ReactJS
 ## Exercises in using React
 
-Repository created for the purpose of getting to know the React.js library.
+Repository created for the purpose of getting to know the React.js library.aaa
 
 Exercises have been written using **Visual Studio Code**.
 

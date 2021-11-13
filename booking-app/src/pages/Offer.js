@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import { fetchOffer } from '../services';
 
 function OfferPage () {
     const { offerId } = useParams();
+    const history = useHistory();
 
     const [ offer, setOffer] = useState(null);
 
@@ -20,9 +21,36 @@ function OfferPage () {
         fetchData();
     }, [offerId]);
 
+    const handleClick = () => {
+        if (offer) {
+            history.push(`/offer/${(parseInt(offer.id, 10) + 1)}`)
+        }
+    }
+
+    const Indicator = () => (<div>Loading...</div>);
+
+    const Content = ({offer, handleClick}) => {
+        const { name, street, city, country } = offer;
+        return (
+            <>
+            {/* to znacznik React fragment */}
+                <h1>{name}</h1>
+                <p>{street}, {city}</p>
+                <p>{country}</p>
+
+                <button onClick={handleClick}>Next offer</button>
+            </>
+        );
+    }
+
+    // const renderButton = () => {
+    //     return <button>Next offer</button>
+    // }
+
     return (
         <div>
-            <h1>#{offerId} {offer && offer.name}</h1>
+            { offer ? <Content offer={offer} handleClick={handleClick} /> : <Indicator />}
+            {/* {renderButton()} */}
         </div>
     );
 }

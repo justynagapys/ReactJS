@@ -42,8 +42,9 @@ function Home() {
       </div>
 
       {offers.map((elem)=>
-        <OfferListItem 
+        <OfferListItem
           key={`offer-${elem.id}`} //unikalne klucze w obrębie iteracji
+          id={elem.id}
           name={elem.name}
           street={elem.street}
           city={elem.city}

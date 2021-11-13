@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const offerStyles = { //wystylowanie
     main: {
@@ -8,10 +9,9 @@ const offerStyles = { //wystylowanie
     h2: {
         cursor: 'pointer'
     }
-    
 };
 
-function OfferListItem({ name, street, city, country, cover, handleClick }) { //komponent przyjmuje tylko jeden argument (= to ten sam zapis co z props)
+function OfferListItem({ id, name, street, city, country, cover }) { //komponent przyjmuje tylko jeden argument (= to ten sam zapis co z props)
     return (
         //dorzucenie cssów przez "offer"
         <div className="offer" style={offerStyles.main}>
@@ -19,7 +19,9 @@ function OfferListItem({ name, street, city, country, cover, handleClick }) { //
                 <img src={cover} alt="" width="150px" />
             </div>
             <div className="offer__column">
-                <h2 onClick={() => handleClick(name)} style={offerStyles.h2}>{name}</h2>
+                <h2 style={offerStyles.h2}>
+                    <Link to={`/offer/${id}`}>{name}</Link>
+                    </h2>
                 <p>{street}, {city}</p>
                 <p>{country}</p>
             </div>

@@ -1,2 +1,2 @@
 export { fetchPosts } from './posts';
-export { fetchOffers } from './offers';
+export { fetchOffers, fetchOffer } from './offers';

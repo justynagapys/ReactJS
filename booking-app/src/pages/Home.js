@@ -4,35 +4,7 @@ import { useState, useEffect } from 'react'; //hook korzystający z dobrodziejst
 //import { fetchOffers } from './services/offers';
 
 import { fetchOffers, fetchPosts } from '../services';
-
-const listBackground = { //wystylowanie
-  backgroundColor: 'white',
-  padding: 10,
-  };
-
-function Offer({ name, street, city, country, cover, handleClick}) { //komponent przyjmuje tylko jeden argument (= to ten sam zapis co z props)
-  return (
-    //dorzucenie cssów przez "offer"
-    <div className="offer" style={listBackground}>
-      <div className="offer__column offer__column--w150 ">
-        <img src={cover} alt="" width="150px"/>
-      </div>
-      <div className="offer__column">
-        <h2 onClick={()=>handleClick(name)} style={{cursor: 'pointer'}}>{name}</h2>
-        <p>{street}, {city}</p>
-        <p>{country}</p>
-      </div>
-    </div>
-  );
-}
-
-Offer.propTypes = { //definicja obiektu do 'ala' walidacji
-  name:PropTypes.string.isRequired,
-}
-
-Offer.defaultProps = { //ustawienie defaultowego propsa
-  street: 'Brakuje nazwy ulicy!'
-}
+import OfferListItem from '../components/OfferListItem';
 
 function Home() {
 
@@ -70,7 +42,7 @@ function Home() {
       </div>
 
       {offers.map((elem)=>
-        <Offer 
+        <OfferListItem 
           key={`offer-${elem.id}`} //unikalne klucze w obrębie iteracji
           name={elem.name}
           street={elem.street}

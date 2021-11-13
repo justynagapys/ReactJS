@@ -20,10 +20,10 @@ function NavMenu () {
         <nav>
             <ul style={listStyle}>
                 <li style={listElemStyle}>
-                    <NavLink activeStyle={activeStyles} to="/">Home</NavLink>
+                    <NavLink activeStyle={activeStyles} to="/" exact>Home</NavLink>
                 </li>
                 <li style={listElemStyle}>
-                    <NavLink activeStyle={activeStyles} to="/contact">Contact</NavLink>
+                    <NavLink activeStyle={activeStyles} to="/contact" exact>Contact</NavLink>
                 </li>
             </ul>
         </nav>

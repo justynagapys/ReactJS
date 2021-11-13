@@ -23,7 +23,7 @@ function App() {
                         {/* exact nie podpowiada nam wtedy innych ścieżek przez Switcha */}
                             <Home />
                         </Route>
-                        <Route path="/offer/:offerId">
+                        <Route path="/offer/:offerId" exact>
                             <Offer />
                         </Route>
                         <Route path="/contact" exact>

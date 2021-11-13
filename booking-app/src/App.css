@@ -1,5 +1,5 @@
 .App {
-  margin: 15px;
+  margin: 10px;
 }
 
 .App-link {
@@ -20,6 +20,6 @@
 }
 
 .offer__column--w150 {
-  width: 150px;
-  margin: 20px;
+  width: 120px;
+  margin: 10px;
 }

@@ -1,7 +1,13 @@
 export const fetchOffers = async () => {
     try {
+        // fetch('/data/offers.json')
+        // .then(response => response.json())
+        // .then(data => console.log(data))
         const response = await fetch('/data/offers.json');
-        const data = response.json();
+        const data = await response.json();
+
+        //here modify your data as you want!
+
         return data;
     } catch (error) {
         // console.error(error);

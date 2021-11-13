@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'; //hook korzystający z dobrodziejst reacta, przechowujący stan obiektu
 import './App.css';
+import { fetchPosts } from './services/posts';
+import { fetchOffers } from './services/offers';
 
 const listBackground = { //wystylowanie
+  backgroundColor: 'white',
   padding: 10,
   };
 
@@ -35,17 +38,28 @@ function Home() {
   const [offers, setOffers] = useState([]);
   //const selectedOffer='Cozy flat';
   const [selectedOffer, setSelectedOffer] = useState('Cozy flat');
+  const [data, setData] = useState([]);
   //indeks 0 - variable -> cozy flat
   //indeks 1 - callback
 
    useEffect(()=>{
-      setSelectedOffer('???');
+    setSelectedOffer('???');
    }, []);
 
   useEffect(() => {
-    fetch('/data/offers.json')
-    .then(response => response.json())
-    .then(data => { setOffers(data);console.log(data)})
+    setData(fetchPosts());
+  }, []);
+
+  useEffect(() => {
+    async function fetchData(){
+      try {
+        const data = await fetchOffers();
+        setOffers(data);
+      } catch (error) {
+        // UI - error notification
+      }
+    }
+    fetchData();
   }, []);
 
   return (

@@ -1,0 +1,12 @@
+.App {
+    font-family: sans-serif;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display:block;
+}
